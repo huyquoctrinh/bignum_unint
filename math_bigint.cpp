@@ -112,6 +112,7 @@ bigint add_dec_step(bigint a, bigint b) {
     return res;
 }
 bigint add_dec(bigint a, bigint b) {
+    bigint res;
     if ((a.dau == 1) && (b.dau == 1)) {
         return add_dec_step(a, b);
     }
@@ -122,7 +123,7 @@ bigint add_dec(bigint a, bigint b) {
         return substract(b, a);
     }
     else if ((a.dau == 0) && (b.dau == 0)) {
-        bigint res;
+        
         res = add_dec_step(a, b);
         res.dau = 0;
         return res;
@@ -164,9 +165,10 @@ bigint substract(bigint a, bigint b) {
     }
     else if (check == -1) {
         bigint res;
-        res.dau = 0;
         init(res, 128);
+        res.dau = 0;
         res = subtract_step(b, a);
+        return res;
         
     }
     return subtract_step(a, b);

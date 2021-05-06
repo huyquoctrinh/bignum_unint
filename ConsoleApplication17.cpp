@@ -7,7 +7,7 @@
 using namespace std;
 int main() {
 	bigint a, b, res;
-	string a1 = "-200";
+	string a1 = "200";
 	string b1 = "223";
 	a = string2bigint(a1);
 	b = string2bigint(b1);
@@ -26,5 +26,6 @@ int main() {
 	*/
 	//output(add_dec(a, b));
 	//delete_trash(a, 3);
-	cout << res.dau;
+	cout << a.dau << " " << b.dau << "\n";
+	cout<<res.dau;
 }
