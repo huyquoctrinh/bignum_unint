@@ -1,0 +1,6 @@
+﻿  math_bigint.cpp
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\math_bigint.cpp(67): warning C4715: 'makeEqualLength': not all control paths return a value
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\math_bigint.cpp(28): warning C4715: 'compare': not all control paths return a value
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\math_bigint.cpp(130): warning C4715: 'add_dec': not all control paths return a value
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\math_bigint.cpp(199): warning C4715: 'compare_full': not all control paths return a value
+  ConsoleApplication17.vcxproj -> C:\Users\ASUS\source\repos\ConsoleApplication17\Debug\ConsoleApplication17.exe
