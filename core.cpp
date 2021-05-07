@@ -34,7 +34,10 @@ void delete_fron(bigint& a,int count) {
 }
 bigint string2bigint(string s) {
 	bigint res;
-	int count=0;
+	unsigned int count=0;
+	if (s[0] == '-') {
+		int l = s.length() - 1;
+	}
 	int l = s.length();
 	init(res, l);
 	if (s[0] == '-') {
@@ -95,4 +98,13 @@ void delete_trash(bigint& a, int count) {
 	for (int i = 0;i<count; i++) {
 		pop_back(a);
 	}
+}
+bigint reverse(bigint a) {
+	int l = getlByte(a);
+	bigint res;
+	init(res, l);
+	for (int i = 0; i < l; i++) {
+		res.data.byte[i] = a.data.byte[l-i-1];
+	}
+	return res;
 }

@@ -12,7 +12,7 @@ struct bigint {
 };
 int getLength(string a);
 int getlByte(bigint a);
-bigint init(bigint& a, int l);
+bigint init(bigint &a, int l);
 void output(bigint a);
 void out_string(string a);
 bigint string2bigint(string a);
@@ -23,4 +23,7 @@ void pop_back(bigint& a);
 void pop_front(bigint& a);
 int getDigit(bigint a, int pos);
 void delete_trash(bigint& a, int count);
+bigint reverse(bigint a);
+
+
 #pragma once

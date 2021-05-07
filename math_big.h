@@ -14,4 +14,11 @@ bigint substract(bigint a, bigint b);
 void equal(bigint& a, bigint& b);
 int compare_full(bigint a, bigint b);
 bigint subtract_step(bigint a, bigint b);
+bigint multiply(bigint a, bigint b);
+int bin2dec(bigint n);
+int bitshift_right(bigint a, int unit);
+int bitshift_left(bigint a, int unit);
+int mod(bigint a, int n);
+bigint divide(bigint a, int divisor);
+bigint dec2bin(bigint n);
 #pragma once
