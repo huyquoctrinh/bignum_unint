@@ -1,2 +1,16 @@
 ﻿  ConsoleApplication17.cpp
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\dynamic_core.h(6,37): warning C4244: 'argument': conversion from '__int64' to 'size_t', possible loss of data
+  core.cpp
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\dynamic_core.h(6,37): warning C4244: 'argument': conversion from '__int64' to 'size_t', possible loss of data
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\core.cpp(10,15): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\core.cpp(27,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\core.cpp(44,12): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\core.cpp(80,13): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  math_bigint.cpp
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\dynamic_core.h(6,37): warning C4244: 'argument': conversion from '__int64' to 'size_t', possible loss of data
+  Generating Code...
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\math_bigint.cpp(35): warning C4715: 'compare': not all control paths return a value
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\math_bigint.cpp(74): warning C4715: 'makeEqualLength': not all control paths return a value
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\math_bigint.cpp(149): warning C4715: 'add_dec': not all control paths return a value
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\math_bigint.cpp(219): warning C4715: 'compare_full': not all control paths return a value
   ConsoleApplication17.vcxproj -> C:\Users\ASUS\source\repos\ConsoleApplication17\Debug\ConsoleApplication17.exe

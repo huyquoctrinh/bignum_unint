@@ -72,6 +72,7 @@ int makeEqualLength(bigint& a, bigint& b) {
         return n1;
     }
 }
+/*
 bigint add_bin(bigint a, bigint b) {
     bigint res;
     int buffer = 0;
@@ -93,11 +94,13 @@ bigint add_bin(bigint a, bigint b) {
     }
     return res;
 }
+*/
 bigint add_dec_step(bigint a, bigint b) {
     bigint res;
     int la = getlByte(a);
     int lb = getlByte(b);
     int l = makeEqualLength(a, b);
+    output(a); cout << "\n"; output(b); cout << "\n";
     res = init(res, l);
     int buffer = 0;
     int count = 0;
@@ -105,16 +108,23 @@ bigint add_dec_step(bigint a, bigint b) {
         int fnum = getDigit(a, i);
         int snum = getDigit(b, i);
         int sum = fnum + snum + buffer;
+        //cout <<"sum "<< sum % 10 << "\n";
         push_front(res,sum % 10);
         count++;
-        if (sum > 10) {
+        if (sum >= 10) {
             buffer = 1;
         }
         else {
             buffer = 0;
         }
+        //cout <<"buffer: " <<buffer<<"\n";
+        //cout << "count: " << count << "\n";
         
     }
+    if (buffer == 1) {
+        push_front(res, 1);
+    }
+    //cout << buffer << "\n";
     delete_trash(res, count);
     return res;
 }
@@ -242,7 +252,7 @@ bigint multiply(bigint a, bigint b) {
         return r;
     }
     pop_back(res);
-    res = reverse(res);
+    //res = reverse(res);
     if ((a.dau == 0) && (b.dau == 0)) {
         doidau(res, true);
     }
@@ -370,5 +380,33 @@ bigint dec2bin(bigint n) {
     }
     //cout << count << "\n";
     delete_trash(res, 2);
+    return res;
+}
+
+bigint add_bin(bigint a, bigint b) {
+    int l1 = getlByte(a);
+    int l2 = getlByte(b);
+    bigint res; 
+    int count = 0;
+    int l = makeEqualLength(a, b);
+    res = init(res, l);
+    int buffer = 0;
+    for (int i = l - 1; i >= 0; i--) {
+        int fbit = getDigit(a, i);
+        int sbit = getDigit(b, i);
+        int sum = (fbit ^ sbit ^ buffer);
+        cout << fbit << " " << sbit << " " << sum << "\n";
+        push_front(a,sum);
+        count++;
+        if ((fbit == 1) && (sbit == 1)) {
+            buffer = 1;
+        }
+        else {
+            buffer = 0;
+        }
+    }
+    if (buffer == 1) {
+        push_front(res,1);
+    }
     return res;
 }

@@ -9,8 +9,9 @@ int getLength(string a) {
 int getlByte(bigint a) {
 	return a.data.length;
 }
-bigint init(bigint& a, int l) {
+bigint init(bigint &a, int l) {
 	a.data.length = l;
+	a.data.byte = new uint16_t[l];
 	return a;
 }
 void output(bigint a) {
@@ -38,13 +39,17 @@ bigint string2bigint(string s) {
 	if (s[0] == '-') {
 		int l = s.length() - 1;
 	}
-	int l = s.length();
+	
+	long long l = s.length();
 	init(res, l);
+	cout << l<<"\n";
+	//cout << res.data.length<<"\n";
 	if (s[0] == '-') {
 		res.dau = 0;
 		for (int i = 1; i < l; i++) {
 			push_back(res,int(s[i] - 48));
-			count++;
+			pop_front(res);
+			//count++;
 		}
 		count += 1;
 	}
@@ -52,10 +57,11 @@ bigint string2bigint(string s) {
 		res.dau = 1;
 		for (int i = 0; i < l; i++) {
 			push_back(res,int(s[i] - 48));
-			count++;
+			pop_front(res);
+			//count++;
 		}
 	}
-	delete_fron(res, count);
+	//delete_fron(res, count);
 	return res;
 }
 string bigint2string(bigint a) {
@@ -99,10 +105,10 @@ void delete_trash(bigint& a, int count) {
 		pop_back(a);
 	}
 }
-bigint reverse(bigint a) {
+bigint reverse(bigint& a) {
 	int l = getlByte(a);
 	bigint res;
-	init(res, l);
+	res = init(res, l);
 	for (int i = 0; i < l; i++) {
 		res.data.byte[i] = a.data.byte[l-i-1];
 	}

@@ -7,11 +7,16 @@
 using namespace std;
 int main() {
 	bigint a, b, res;
-	string a1 = "879327831638311731956545453654654365454233423234143413265674676554754476644556657878678686786";
-	string b1 = "12312112312321312387658787348204700423984923008493292840";
+	string a1 = "";
+	string x1 = "2469129952444475555557356656564345978899799979058790779696596594646865767338";
+	string b1 = "";
 	a = string2bigint(a1);
 	b = string2bigint(b1);
-	output(multiply(a,b));
+	//res = init(res, 128);
+	output(a);
+	res = multiply(a,b);
+	output(res);
+	//output(res);
 	//push_front(b, 0);
 	//push_front(b, 0);
 	//output(res);

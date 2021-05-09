@@ -21,4 +21,5 @@ int bitshift_left(bigint a, int unit);
 int mod(bigint a, int n);
 bigint divide(bigint a, int divisor);
 bigint dec2bin(bigint n);
+bigint add_bin(bigint a, bigint b);
 #pragma once
