@@ -24,12 +24,18 @@
     <ClCompile Include="math_bigint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="advanced_op.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dynamic_core.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="math_big.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adv.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

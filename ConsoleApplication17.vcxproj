@@ -139,11 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="advanced_op.cpp" />
     <ClCompile Include="ConsoleApplication17.cpp" />
     <ClCompile Include="core.cpp" />
     <ClCompile Include="math_bigint.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="adv.h" />
     <ClInclude Include="dynamic_core.h" />
     <ClInclude Include="math_big.h" />
   </ItemGroup>

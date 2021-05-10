@@ -2,7 +2,7 @@
 #include<stdint.h>
 using namespace std;
 struct pdata {
-	long long length = 128;
+	long long length = 1024;
 	uint16_t* byte = (uint16_t*)calloc(length,sizeof(uint16_t));
 };
 struct bigint {
@@ -12,7 +12,7 @@ struct bigint {
 };
 int getLength(string a);
 int getlByte(bigint a);
-bigint init(bigint &a, int l);
+bigint init(bigint& a, int l);
 void output(bigint a);
 void out_string(string a);
 bigint string2bigint(string a);

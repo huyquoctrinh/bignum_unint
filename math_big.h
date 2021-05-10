@@ -15,11 +15,16 @@ void equal(bigint& a, bigint& b);
 int compare_full(bigint a, bigint b);
 bigint subtract_step(bigint a, bigint b);
 bigint multiply(bigint a, bigint b);
-int bin2dec(bigint n);
+unsigned long long bin2dec(bigint n);
 int bitshift_right(bigint a, int unit);
 int bitshift_left(bigint a, int unit);
 int mod(bigint a, int n);
 bigint divide(bigint a, int divisor);
 bigint dec2bin(bigint n);
-bigint add_bin(bigint a, bigint b);
+//bigint add_bin(bigint a, bigint b);
+bigint addBinary(bigint a, bigint b);
+bigint not_op(bigint a);
+bigint dec2bin_neg(bigint a);
+unsigned long long not_op_dec(bigint a);
+bigint twoComplement(bigint a);
 #pragma once

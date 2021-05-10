@@ -11,7 +11,7 @@ int getlByte(bigint a) {
 }
 bigint init(bigint &a, int l) {
 	a.data.length = l;
-	a.data.byte = new uint16_t[l];
+	a.data.byte = (uint16_t*)calloc(l, sizeof(uint16_t));;
 	return a;
 }
 void output(bigint a) {
@@ -49,16 +49,17 @@ bigint string2bigint(string s) {
 		for (int i = 1; i < l; i++) {
 			push_back(res,int(s[i] - 48));
 			pop_front(res);
-			//count++;
+			count++;
 		}
 		count += 1;
 	}
 	else if ((s[0] != '-') || (s[0] == '+')) {
 		res.dau = 1;
 		for (int i = 0; i < l; i++) {
+			res.data.byte[i] == s[i];
 			push_back(res,int(s[i] - 48));
 			pop_front(res);
-			//count++;
+			count++;
 		}
 	}
 	//delete_fron(res, count);

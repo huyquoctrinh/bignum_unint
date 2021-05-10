@@ -77,6 +77,7 @@ bigint add_bin(bigint a, bigint b) {
     bigint res;
     int buffer = 0;
     int l = makeEqualLength(a, b);
+    init(res, l);
     for (int i = l - 1; i >= 0; i--) {
         int fbit = getDigit(a, i);
         int sbit = getDigit(b, i);
@@ -97,8 +98,8 @@ bigint add_bin(bigint a, bigint b) {
 */
 bigint add_dec_step(bigint a, bigint b) {
     bigint res;
-    int la = getlByte(a);
-    int lb = getlByte(b);
+    //int la = getlByte(a);
+    //int lb = getlByte(b);
     int l = makeEqualLength(a, b);
     output(a); cout << "\n"; output(b); cout << "\n";
     res = init(res, l);
@@ -108,7 +109,7 @@ bigint add_dec_step(bigint a, bigint b) {
         int fnum = getDigit(a, i);
         int snum = getDigit(b, i);
         int sum = fnum + snum + buffer;
-        //cout <<"sum "<< sum % 10 << "\n";
+        cout <<"sum "<< sum % 10 << "\n";
         push_front(res,sum % 10);
         count++;
         if (sum >= 10) {
@@ -117,14 +118,14 @@ bigint add_dec_step(bigint a, bigint b) {
         else {
             buffer = 0;
         }
-        //cout <<"buffer: " <<buffer<<"\n";
-        //cout << "count: " << count << "\n";
+        cout <<"buffer: " <<buffer<<"\n";
+        cout << "count: " << count << "\n";
         
     }
     if (buffer == 1) {
         push_front(res, 1);
     }
-    //cout << buffer << "\n";
+    cout << buffer << "\n";
     delete_trash(res, count);
     return res;
 }
@@ -217,6 +218,15 @@ int compare_full(bigint a, bigint b) {
         }
     }
 }
+bigint reverse(bigint a) {
+    int l = getlByte(a);
+    bigint res;
+    init(res, l);
+    for (int i = 0; i < l; i++) {
+        res.data.byte[i] = a.data.byte[l - i-1];
+    }
+    return res;
+}
 bigint multiply(bigint a, bigint b) {
     int l1 = getlByte(a);
     int l2 = getlByte(b);
@@ -252,7 +262,7 @@ bigint multiply(bigint a, bigint b) {
         return r;
     }
     pop_back(res);
-    //res = reverse(res);
+    res = reverse(res);
     if ((a.dau == 0) && (b.dau == 0)) {
         doidau(res, true);
     }
@@ -273,8 +283,9 @@ bigint multiply(bigint a, bigint b) {
     */
     return res;
 }
-int bin2dec(bigint n) {
-    int dec_value = 0;
+
+unsigned long long bin2dec(bigint n) {
+    unsigned long long dec_value = 0;
     int base = 1;
 
     int len = getlByte(n);
@@ -291,7 +302,6 @@ int bitshift_right(bigint a, int unit) {
     for (int i = 0; i < unit; i++) {
         pop_back(a);
     }
-    //int kq = 0;
     int kq = bin2dec(a);
     return kq;
 }
@@ -301,7 +311,6 @@ int bitshift_left(bigint a, int unit) {
         pop_front(a);
         push_back(a,0);
     }
-    //int kq = 0;
     int kq = bin2dec(a);
     return kq;
 }
@@ -380,33 +389,89 @@ bigint dec2bin(bigint n) {
     }
     //cout << count << "\n";
     delete_trash(res, 2);
+    /*
+    if (n.dau == 0) {
+        bigint kq;
+        init(kq, l + 1);
+        kq = twoComplement(res);
+        return kq;
+    }
+    */
     return res;
 }
-
-bigint add_bin(bigint a, bigint b) {
-    int l1 = getlByte(a);
-    int l2 = getlByte(b);
-    bigint res; 
-    int count = 0;
+bigint addBinary(bigint a, bigint b)
+{
+    bigint res;
+    int s = 0; 
     int l = makeEqualLength(a, b);
-    res = init(res, l);
+    init(res, l);
+    
     int buffer = 0;
     for (int i = l - 1; i >= 0; i--) {
         int fbit = getDigit(a, i);
         int sbit = getDigit(b, i);
         int sum = (fbit ^ sbit ^ buffer);
-        cout << fbit << " " << sbit << " " << sum << "\n";
-        push_front(a,sum);
-        count++;
+        cout << "fbit: " << fbit << "sbit: " << sbit << "\n";
+        cout <<"sum: "<< sum <<" "<<"buffer: "<<buffer<< "\n";
+        push_front(res, sum);
+        pop_back(res);
         if ((fbit == 1) && (sbit == 1)) {
+            buffer = 1;
+        }
+        else if ((fbit ==1) && (sbit==0)&& (buffer==1)) {
+            buffer = 1;
+        }
+        else if ((fbit == 0) && (sbit == 1) && (buffer == 1)) {
             buffer = 1;
         }
         else {
             buffer = 0;
         }
     }
+    cout << buffer<<"\n";
     if (buffer == 1) {
-        push_front(res,1);
+        push_front(res, 1);
+    }
+    
+    return res;
+}
+bigint not_op(bigint a) {
+    bigint res;
+    int l = getlByte(a);
+    init(res, l);
+    for (int i = 0; i < l; i++) {
+        if (a.data.byte[i] == 1) {
+            res.data.byte[i] = 0;
+        }
+        else {
+            res.data.byte[i] = 1;
+        }
+        
     }
     return res;
+}
+unsigned long long not_op_dec(bigint a) {
+    bigint res;
+    res = not_op(a);
+    unsigned long long kq = bin2dec(res);
+    return kq;
+}
+bigint twoComplement(bigint a)
+{
+    bigint result;
+    result = a;
+    bool flag = false;
+    int l = getlByte(result);
+    for (int i = l - 1; i > 0 && flag != true; i--)
+    {
+        if (result.data.byte[i] == 1)
+        {
+            for (int j = i - 1; j > 0; j--)
+                result.data.byte[j] = (result.data.byte[j] == 0) ? 1 : 0;
+            flag = true;
+        }
+    }
+
+    result.data.byte[0] = 1;
+    return result;
 }
