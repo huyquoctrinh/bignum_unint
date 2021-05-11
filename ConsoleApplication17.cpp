@@ -175,19 +175,13 @@ void script(string filein,string fileout) {
 }
 int main(int argc , char** argv) 
 {
-    script(argv[1], argv[2]);
-    /*
-	ofstream out("output.txt");
-    int n = get_num_line("input.txt");
-    string* s = read_file("input.txt",n);
-    bigint as;
-    int* a = lenh(s,n);
-    //cout << check_dau(s[0]);
-    //as = string2bigint(res);
-    //output(as);
-    for (int i = 0; i < n; i++) {
-        cout << a[i];
-        
-    }
-    */
+    //script(argv[1], argv[2]);
+    bigint a, b,res;
+    string a1 = "100";
+    string b1 = "1";
+    a = string2bigint(a1);
+    b = string2bigint(b1);
+    int l = makeEqualLength(a, b);
+    //output(res);
+    cout << l;
 }

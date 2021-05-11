@@ -55,6 +55,7 @@ void make_equal(bigint& a, bigint& b) {
     while (na < n) {
         push_front(a,0);
         na++;
+        a.data.length = na;
     }
 }
 int makeEqualLength(bigint& a, bigint& b) {
@@ -125,7 +126,7 @@ bigint add_dec_step(bigint a, bigint b) {
     if (buffer == 1) {
         push_front(res, 1);
     }
-    cout << buffer << "\n";
+    //cout << buffer << "\n";
     delete_trash(res, count);
     return res;
 }
@@ -474,4 +475,39 @@ bigint twoComplement(bigint a)
 
     result.data.byte[0] = 1;
     return result;
+}
+bigint div(bigint a, bigint b)
+{
+    int la = getlByte(a);
+    int lb = getlByte(b);
+    bigint res;
+    init(res, la);
+    res = a;
+    int comp = 2;
+    bigint count, one;
+    init(count, la);
+    count.dau = 1;
+    init(one, 1);
+    one.dau = 1;
+    one.data.byte[0] = 1;
+    output(one);
+    cout << "\n";
+    //output(count);
+   count = add_dec(count, one);
+    output(count);
+    /*
+    while ((comp != 0) && (comp != -1))
+    {
+        comp = compare_full(res, b);
+        if (comp == 0)
+            break;
+
+        res = substract(res, b);
+        count = add_dec(count, one);
+    }
+    */
+    //count = add_dec(count, one);
+
+    //output(res);
+    return count;
 }
