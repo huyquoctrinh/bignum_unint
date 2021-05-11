@@ -177,11 +177,16 @@ int main(int argc , char** argv)
 {
     //script(argv[1], argv[2]);
     bigint a, b,res;
-    string a1 = "100";
-    string b1 = "1";
+    string a1 = "1000";
+    string b1 = "100";
     a = string2bigint(a1);
     b = string2bigint(b1);
-    int l = makeEqualLength(a, b);
+    //res = div(a, b);
+    //make_equal(b,a);
     //output(res);
-    cout << l;
+    string kq = to_base58(a);
+    for (int i = 0; i < kq.size(); i++) {
+        cout << kq[i];
+    }
+    //cout << l;
 }

@@ -54,8 +54,7 @@ void make_equal(bigint& a, bigint& b) {
     int na = getlByte(a);
     while (na < n) {
         push_front(a,0);
-        na++;
-        a.data.length = na;
+        na = getlByte(a);
     }
 }
 int makeEqualLength(bigint& a, bigint& b) {
@@ -106,12 +105,14 @@ bigint add_dec_step(bigint a, bigint b) {
     res = init(res, l);
     int buffer = 0;
     int count = 0;
+    
     for (int i = l - 1; i >= 0; i--) {
         int fnum = getDigit(a, i);
         int snum = getDigit(b, i);
         int sum = fnum + snum + buffer;
-        cout <<"sum "<< sum % 10 << "\n";
-        push_front(res,sum % 10);
+        cout << "sum " << sum % 10 << "\n";
+        push_front(res, sum % 10);
+        pop_back(res);
         count++;
         if (sum >= 10) {
             buffer = 1;
@@ -119,15 +120,18 @@ bigint add_dec_step(bigint a, bigint b) {
         else {
             buffer = 0;
         }
-        cout <<"buffer: " <<buffer<<"\n";
+        cout << "buffer: " << buffer << "\n";
         cout << "count: " << count << "\n";
-        
+
     }
+    
     if (buffer == 1) {
         push_front(res, 1);
     }
-    //cout << buffer << "\n";
-    delete_trash(res, count);
+    
+    
+    cout << buffer << "\n";
+    //delete_trash(res, count);
     return res;
 }
 bigint add_dec(bigint a, bigint b) {
@@ -495,7 +499,7 @@ bigint div(bigint a, bigint b)
     //output(count);
    count = add_dec(count, one);
     output(count);
-    /*
+    
     while ((comp != 0) && (comp != -1))
     {
         comp = compare_full(res, b);
@@ -505,9 +509,41 @@ bigint div(bigint a, bigint b)
         res = substract(res, b);
         count = add_dec(count, one);
     }
-    */
-    //count = add_dec(count, one);
+    count = add_dec(count, one);
 
     //output(res);
     return count;
+}
+
+
+char reVal(int num)
+{
+    if (num >= 0 && num <= 9)
+        return (char)(num + '0');
+    else
+        return (char)(num - 10 + 'A');
+}
+void strev(char* str)
+{
+    int len = strlen(str);
+    int i;
+    for (i = 0; i < len / 2; i++)
+    {
+        char temp = str[i];
+        str[i] = str[len - i - 1];
+        str[len - i - 1] = temp;
+    }
+}
+char* fromDeci(char res[], int base, int inputNum)
+{
+    int index = 0;
+    while (inputNum > 0)
+    {
+        res[index++] = reVal(inputNum % base);
+        inputNum /= base;
+    }
+    res[index] = '\0';
+    strev(res);
+
+    return res;
 }

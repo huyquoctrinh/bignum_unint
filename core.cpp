@@ -78,7 +78,7 @@ void push_back(bigint& a, int n) {
 }
 void push_front(bigint& a, int n) {
 	a.data.length += 1;
-	for (int i = a.data.length; i >= 0; i--) {
+	for (int i = a.data.length-1; i >= 0; i--) {
 		a.data.byte[i + 1] = a.data.byte[i];
 	}
 	a.data.byte[0] = n;
