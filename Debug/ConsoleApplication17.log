@@ -1,4 +1,8 @@
 ﻿  ConsoleApplication17.cpp
 C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\dynamic_core.h(6,37): warning C4244: 'argument': conversion from '__int64' to 'size_t', possible loss of data
-C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\ConsoleApplication17.cpp(52,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\ConsoleApplication17.cpp(40,34): warning C4244: 'initializing': conversion from '__int64' to 'unsigned int', possible loss of data
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\ConsoleApplication17.cpp(56,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\ConsoleApplication17.cpp(62,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\ConsoleApplication17.cpp(115,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\ConsoleApplication17\ConsoleApplication17\ConsoleApplication17.cpp(117,33): warning C4018: '<': signed/unsigned mismatch
   ConsoleApplication17.vcxproj -> C:\Users\ASUS\source\repos\ConsoleApplication17\Debug\ConsoleApplication17.exe

@@ -7,6 +7,7 @@
 #include<sstream>
 #include"dynamic_core.h"
 #include"math_big.h"
+#include<string.h>
 #include"adv.h"
 using namespace std;
 int get_num_line(string filename) {
@@ -56,65 +57,137 @@ void outstring(string a) {
         cout << a[i];
     }
 }
-int check_dau(string* s) {
-        if (s[4] != "+") {
+int check_dau(string s) {
+   
+    for (int i = 1; i < s.size()-1; i++) {
+        if ((s[i - 1] ==' ') && (s[i + 1] == ' ') && (s[i] == '+')) {
             return 1;
         }
-        else if (s[4] == "-") {
+        else if ((s[i - 1] == ' ') && (s[i + 1] == ' ') && (s[i] == '-')) {
             return 2;
         }
-        else if (s[4] == "*") {
+        else if ((s[i - 1] == ' ') && (s[i + 1] == ' ') && (s[i] == '*')) {
             return 3;
         }
-        else if (s[4] == "/") {
+        else if ((s[i - 1] == ' ') && (s[i + 1] == ' ') && (s[i] == '/')) {
             return 4;
         }
-        else if (s[4] == ">>") {
+        else if ((s[0] == '10') && (s[2] == '2')) {
             return 5;
         }
-        else if (s[4] == "<<") {
+        else if ((s[0] == '2') && (s[2] == '10')) {
             return 6;
         }
-        else if (s[4] == "~=") {
-            return 7;
-        }
-        else if (s[4] != "mod") {
-            return 8;
-        }
-        else if (s[4] != "pow") {
-            return 9;
     }
-        return 0;
-
+    return 0;
 }
-int* lenh(string* s[],int n) {
+
+int* lenh(string* s,int n) {
     int* a = new int[n];
-    for (int i = 0; i < n; i++) {
-        if ((s[i][0] == "10") && (s[i][2] == "2") &&(check_dau(s[i])==0)) {
+    for (int i = 0; i < n;i++) {
+        if (check_dau(s[i])==1) {
             a[i] = 1;
         }
-        else if ((s[i][0] == "2") && (s[i][2] == "10") && (check_dau(s[i]) == 0)) {
+        else if (check_dau(s[i]) == 2) {
             a[i] = 2;
         }
-        else if (check_dau(s[i]) == 1) {
+        else if (check_dau(s[i]) == 3) {
             a[i] = 3;
         }
-        else if (check_dau(s[i]) == 2) {
+        else if (check_dau(s[i]) == 4) {
+            a[i] = 4;
+        }
+        else if (check_dau(s[i]) == 5) {
             a[i] = 5;
         }
-        else if (check_dau(s[i]) == 3) {
+        else if (check_dau(s[i]) == 6) {
             a[i] = 6;
         }
-        else if (check_dau(s[i]) == 4) {
+        else if (check_dau(s[i]) == 0) {
             a[i] = 7;
         }
     }
     return a;
 }
-int main() 
+bigint get_bigint1(string s) {
+    bigint kq;
+    string res;
+    for (int i = 0; i < s.size(); i++) {
+        if (s[i] == ' ') {
+            for (int j = i+1; j < s.size(); j++) {
+                res.push_back(s[j]);
+                if (s[j] == ' ') {
+                    break;
+                }
+            }
+            break;
+        }
+    }
+    kq = string2bigint(res);
+    return kq;
+}
+bigint get_bigint2(string s) {
+    string res;
+    bigint kq;
+    for (int i = s.size() - 1; i >= 0; i--) {
+        res.push_back(s[i]);
+        if (s[i] == ' ') {
+            break;
+        }
+    }
+    reverse(res.begin(), res.end()-1);
+    kq = string2bigint(res);
+    return kq;
+}
+void write_out(string fileout, bigint n) {
+    ofstream out(fileout,ios::app);
+    int l = getlByte(n);
+    for (int i = 0; i < l; i++) {
+        out << n.data.byte[i];
+    }
+    out << "\n";
+}
+void script(string filein,string fileout) {
+    bigint a, b;
+    int n = get_num_line(filein);
+    string* s = read_file(filein, n);
+    int* asd = lenh(s, n);
+    for (int i = 0; i < n; i++) {
+        bigint a = get_bigint1(s[i]);
+        bigint b = get_bigint2(s[i]);
+        /*
+        bigint res;
+        if (asd[i] == 1) {
+            res = add_dec(a, b);
+        }
+        else if (asd[i] == 2) {
+            res = substract(a, b);
+        }
+        else if (asd[i] == 3) {
+            res = multiply(a, b);
+        }
+        else if (asd[i] == 4) {
+            res = divide(a, 2);
+        }
+        */
+        write_out(fileout, a);
+    }
+}
+int main(int argc , char** argv) 
 {
+    script(argv[1], argv[2]);
+    /*
 	ofstream out("output.txt");
     int n = get_num_line("input.txt");
     string* s = read_file("input.txt",n);
+    bigint as;
     int* a = lenh(s,n);
+    //cout << check_dau(s[0]);
+    //as = string2bigint(res);
+    //output(as);
+    for (int i = 0; i < n; i++) {
+        cout << a[i];
+        
+    }
+    */
 }
