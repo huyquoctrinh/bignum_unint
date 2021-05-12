@@ -24,6 +24,9 @@ void pop_front(bigint& a);
 int getDigit(bigint a, int pos);
 void delete_trash(bigint& a, int count);
 bigint reverse(bigint a);
-
+int bigint2int(bigint n);
+bigint remove_zero(bigint &a);
+bigint int2bigint(int x);
+string test(int x);
 
 #pragma once

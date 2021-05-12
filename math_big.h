@@ -30,4 +30,5 @@ bigint dec2bin_neg(bigint a);
 unsigned long long not_op_dec(bigint a);
 bigint twoComplement(bigint a);
 bigint div(bigint a, bigint b);
+bigint mod_big(bigint a, bigint b);
 #pragma once

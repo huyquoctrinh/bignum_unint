@@ -144,10 +144,10 @@ bigint add_dec(bigint a, bigint b) {
         doidau(res, true);
         return res;
     }
-    else if ((a.dau == 1) && (b.dau == 0)) {
+    else if ((a.dau == true) && (b.dau == 0)) {
         return substract(a, b);
     }
-    else if ((a.dau == 0) && (b.dau == 1)) {
+    else if ((a.dau == 0) && (b.dau == true)) {
         return substract(b, a);
     }
     else if ((a.dau == 0) && (b.dau == 0)) {   
@@ -158,16 +158,16 @@ bigint add_dec(bigint a, bigint b) {
 }
 bigint subtract_step(bigint a, bigint b) {
     bigint res;
-    int la = getlByte(a);
-    int lb = getlByte(b);
     int count = 0;
     int buffer = 0;
     int l = makeEqualLength(a, b);
-    init(res, la);
+    res = init(res, l);
     for (int i = l - 1; i >= 0; i--) {
         int fbit = getDigit(a, i);
         int sbit = getDigit(b, i);
         sbit = sbit + buffer;
+        //cout<<"fbit "<<fbit<<"sbit "<<sbit<<"buffer "<<buffer<<"\n";
+    
         if (fbit < sbit) {
             fbit += 10;
             buffer = 1;
@@ -175,11 +175,17 @@ bigint subtract_step(bigint a, bigint b) {
         else {
             buffer = 0;
         }
-        int sum = fbit - sbit;
-        push_front(res,sum);
+        int diff = fbit - sbit;
+        //cout<<"diff "<<diff<<"\n";
+        push_front(res,diff);
+        pop_back(res);
         count++;
     }
-    delete_trash(res, count);
+    //cout<<"count: "<<count;
+    free(a.data.byte);
+    free(b.data.byte);
+    //delete_trash(res, count);
+    res = remove_zero(res);
     return res;
 }
 bigint substract(bigint a, bigint b) {
@@ -192,7 +198,8 @@ bigint substract(bigint a, bigint b) {
     }
     else if (check == -1) {
         bigint res;
-        init(res, 128);
+        int l = getlByte(b);
+        init(res, l);
         res = subtract_step(b, a);
         doidau(res, false);
         return res;
@@ -330,6 +337,17 @@ int mod(bigint a, int n)
         res = (res * 10 + getDigit(a, i)) % n;
 
     return res;
+}
+bigint mod_big(bigint a, bigint x)
+{
+    bigint abc;
+    int n = bigint2int(x);
+    int res = 0;
+    int l = getlByte(a);
+    for (int i = 0; i < l; i++)
+        res = (res * 10 + getDigit(a, i)) % n;
+    abc = int2bigint(res);
+    return abc;
 }
 bigint divide_step(bigint number, int divisor)
 {

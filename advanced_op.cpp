@@ -51,6 +51,7 @@ bigint pow(bigint a,int n) {
 	}
 	return multiply(a,pow(a, n - 1));
 }
+
 string to_base32(bigint a) {
 	bigint zero;
 	string res;

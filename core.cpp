@@ -3,6 +3,7 @@
 #include"dynamic_core.h"
 #include<string>
 #include<stdlib.h>
+#include<sstream>
 using namespace std;
 int getLength(string a) {
 	return a.size();
@@ -116,4 +117,38 @@ bigint reverse(bigint& a) {
 		res.data.byte[i] = a.data.byte[l-i-1];
 	}
 	return res;
+}
+int bigint2int(bigint n){
+	string temp;
+	temp = bigint2string(n);
+	stringstream geek(temp);
+	int x=0;
+	geek>>x;
+	return x;
+}
+bigint remove_zero(bigint &a){
+	int l = getlByte(a);
+	for (int i =0;i<l;i++){
+		if (a.data.byte[i]==0){
+			pop_front(a);
+			if(a.data.byte[i]!=0){
+				break;
+			}
+		}
+	}
+	return a;
+}
+bigint int2bigint(int x){
+	string s;
+	bigint res;
+	s=to_string(x);
+	res = string2bigint(s);
+	return res;
+}
+string test(int x){
+	string s;
+	bigint res;
+	s=to_string(x);
+	//res = string2bigint(s);
+	return s;
 }
