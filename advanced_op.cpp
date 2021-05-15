@@ -5,6 +5,7 @@
 #include<sstream>
 #include"dynamic_core.h"
 #include"math_big.h"
+#include<stdlib.h>
 #include "adv.h"
 using namespace std;
 void abs(bigint& a) {
@@ -139,4 +140,55 @@ string to_base58(bigint a) {
 		a = divide(a, 58);
 	}
 	return res;
+}
+bigint square (bigint a){
+	return multiply(a,a);
+}
+bigint pow_prime(bigint a,int b, bigint m){
+	bigint zero,one,res;
+	init(zero,1);
+	zero.data.byte[0]=0;
+	one.data.byte[0]=1;
+	init(res,1);
+	res.data.byte[0]=1;
+	a = mod_big(a,m);
+	while (b>0){
+		if (b&1){
+			res =mod_big(multiply(res,a),m);
+		}
+		b = b>>1;
+		a = mod_big(square(a),m);
+	}
+	return res;
+}
+bigint rand(bigint b){
+	int y = bigint2int(b);
+	int res = 2+rand()%(y-4);
+	bigint u;
+	u = int2bigint(res);
+	return u;
+}
+bool miller_test(int d,bigint n){
+	bigint a,x;
+	bigint one ;
+	init(one,1);
+	one.data.byte[0]=1;
+	a = rand(n);
+	x = pow_prime(a,d,n);
+	if ((compare_full(x,one)==0)||(compare_full(x,substract(n,one))==1)){
+		return true;
+	}
+	bigint d_1;
+	d_1 = int2bigint(d);
+	while(compare_full(d_1,substract(n,one))!=0){
+		x =mod_big(square(x),n);
+		d_1 = multiply(d_1,int2bigint(2));
+		if (compare_full(x,one)==0){
+			return false;
+		}
+		if (compare_full(x,substract(n,one))==0){
+			return true;
+		}
+	}
+	return false;
 }

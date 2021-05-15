@@ -11,4 +11,5 @@ string to_base32(bigint a);
 string to_base64(bigint a);
 string to_base64(bigint a);
 string to_base58(bigint a);
+bigint pow_prime(bigint a,int b, bigint m);
 #pragma once

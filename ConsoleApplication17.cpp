@@ -179,13 +179,15 @@ int main(int argc , char** argv)
 {
     
     //script(argv[1], argv[2]);
-    bigint u, v,ans;
-    string a1 = "1200";
+    bigint u, v,ans,t;
+    string a1 = "9";
     string b1 = "99";
+    string x1="2";
     u = string2bigint(a1);
     v = string2bigint(b1);
+    t = string2bigint(x1);
     // push_front(u,1);
-     ans =mod_big(u,v);
+    ans =pow_prime(u,4,t);
     output(ans);
     // cout<<"ket qua so sanh "<<compare_full(u,v)<<" \n";
     //make_equal(b,a);
