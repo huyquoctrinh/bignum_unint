@@ -192,3 +192,25 @@ bool miller_test(int d,bigint n){
 	}
 	return false;
 }
+bool isPrime(bigint n, int k)
+{
+	bigint one,four,three,zero;
+	one = int2bigint(1);
+	four = int2bigint(4);
+	three= int2bigint(3);
+	zero = int2bigint(0);
+	if (((compare_full(n,one)==-1) && (compare_full(n,one)==0)) || (compare_full(n,four)==0)){
+		return false;
+	}
+	if ((compare_full(n,three)==-1)&&(compare_full(n,three)==0)){
+		return true;
+	}
+	int d = bigint2int(substract(n,one));
+    while (d%2==0)
+        d = d/2;
+    for (int i = 0; i < k; i++)
+         if (!miller_test(d, n))
+              return false;
+	return true;
+}
+   

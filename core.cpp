@@ -45,7 +45,7 @@ bigint string2bigint(string s) {
 	
 	long long l = s.length();
 	init(res, l);
-	cout << l<<"\n";
+	//cout << l<<"\n";
 	//cout << res.data.length<<"\n";
 	if (s[0] == '-') {
 		res.dau = 0;

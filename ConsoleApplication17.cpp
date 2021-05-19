@@ -181,21 +181,10 @@ int main(int argc , char** argv)
     //script(argv[1], argv[2]);
     bigint u, v,ans,t;
     string a1 = "9";
-    string b1 = "99";
-    string x1="2";
-    u = string2bigint(a1);
+    string b1 = "13";
+    string x1="7";
     v = string2bigint(b1);
-    t = string2bigint(x1);
-    // push_front(u,1);
-    ans =pow_prime(u,4,t);
+    u = string2bigint(x1);
+    ans = pow_prime(v,7,u);
     output(ans);
-    // cout<<"ket qua so sanh "<<compare_full(u,v)<<" \n";
-    //make_equal(b,a);
-    //output(ans);
-    //cout<<l;
-    //cout << l;
-    //output(ans);
-    //string s = test(5);
-    //output(ans);
-    //cout<<kq;
 }

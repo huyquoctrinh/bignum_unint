@@ -12,4 +12,6 @@ string to_base64(bigint a);
 string to_base64(bigint a);
 string to_base58(bigint a);
 bigint pow_prime(bigint a,int b, bigint m);
+bool isPrime(bigint n, int k);
+bool miller_test(int d,bigint n);
 #pragma once

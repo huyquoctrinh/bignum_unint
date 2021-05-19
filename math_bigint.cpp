@@ -104,7 +104,7 @@ bigint add_dec_step(bigint a, bigint b) {
     //int la = getlByte(a);
     //int lb = getlByte(b);
     int l = makeEqualLength(a, b);
-    output(a); cout << "\n"; output(b); cout << "\n";
+    //output(a); cout << "\n"; output(b); cout << "\n";
     res = init(res, l);
     int buffer = 0;
     int count = 0;
@@ -113,7 +113,7 @@ bigint add_dec_step(bigint a, bigint b) {
         int fnum = getDigit(a, i);
         int snum = getDigit(b, i);
         int sum = fnum + snum + buffer;
-        cout << "sum " << sum % 10 << "\n";
+        //cout << "sum " << sum % 10 << "\n";
         push_front(res, sum % 10);
         pop_back(res);
         count++;
@@ -123,8 +123,8 @@ bigint add_dec_step(bigint a, bigint b) {
         else {
             buffer = 0;
         }
-        cout << "buffer: " << buffer << "\n";
-        cout << "count: " << count << "\n";
+        //cout << "buffer: " << buffer << "\n";
+        //cout << "count: " << count << "\n";
 
     }
     
@@ -133,7 +133,7 @@ bigint add_dec_step(bigint a, bigint b) {
     }
     
     
-    cout << buffer << "\n";
+    //cout << buffer << "\n";
     //delete_trash(res, count);
     return res;
 }
@@ -381,7 +381,7 @@ bigint divide_step(bigint number, int divisor)
         res.data.byte = { 0 };
         return res;
     }
-    cout << count;
+    // cout << count;
     delete_trash(res, count);
     return res;
 }
@@ -437,8 +437,8 @@ bigint addBinary(bigint a, bigint b)
         int fbit = getDigit(a, i);
         int sbit = getDigit(b, i);
         int sum = (fbit ^ sbit ^ buffer);
-        cout << "fbit: " << fbit << "sbit: " << sbit << "\n";
-        cout <<"sum: "<< sum <<" "<<"buffer: "<<buffer<< "\n";
+        //cout << "fbit: " << fbit << "sbit: " << sbit << "\n";
+       // cout <<"sum: "<< sum <<" "<<"buffer: "<<buffer<< "\n";
         push_front(res, sum);
         pop_back(res);
         if ((fbit == 1) && (sbit == 1)) {
@@ -454,7 +454,7 @@ bigint addBinary(bigint a, bigint b)
             buffer = 0;
         }
     }
-    cout << buffer<<"\n";
+    //cout << buffer<<"\n";
     if (buffer == 1) {
         push_front(res, 1);
     }
@@ -516,7 +516,7 @@ bigint div(bigint a, bigint b)
     one.dau = 1;
     one.data.byte[0] = 1;
     output(one);
-    cout << "\n";
+   // cout << "\n";
     //output(count);
    count = add_dec(count, one);
     output(count);
